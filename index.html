@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en>">
+
+<head>
+    <title>THEERAWUT</title>
+</head>
+
+<body>
+    <ul></ul>
+    <center>
+        <h1 id="color">Google</h1>
+        <form id="form" action="">
+            <input class="inp" id="input" /><button onclick="myFunction()">Send</button>
+        </form>
+        <div id="show" class="show"></div>
+    </center>
+</body>
+
+<script>
+    function myFunction() {
+        var x = document.getElementById("show");
+        if (x.innerHTML === "") {
+            x.innerHTML = input.value;
+        } else {
+            x.innerHTML = input.value;
+        }
+    }
+</script>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    var socket = io();
+
+    var form = document.getElementById("form");
+    var input = document.getElementById("input");
+
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (input.value) {
+            socket.emit('chat message', input.value);
+            input.value = '';
+        }
+    });
+
+
+
+</script>
+
+
+<style>
+    * {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+
+    #color {
+        color: red;
+        font-size: 100px;
+    }
+
+    body {
+        background-color: #112;
+        margin: auto;
+        padding: 0;
+    }
+
+    .inp {
+        margin-top: 50px;
+        width: 30%;
+        padding: 12px 20px;
+        margin: 20px 10px;
+        box-sizing: border-box;
+        border-radius: 20px;
+    }
+
+    button {
+        height: 50px;
+        padding: 12px 20px;
+        background-color: rgb(252, 106, 38);
+        border-radius: 20px;
+    }
+
+    .show {
+        font-size: 100px;
+        color: red;
+    }
+</style>
+
+</html>
